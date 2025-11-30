@@ -266,7 +266,7 @@ const paymentRazorpay = async (req, res) => {
     console.log('Creating RZP order:', { amount: options.amount, currency: options.currency, receipt: options.receipt });
 
     const order = await razorpayInstance.orders.create(options);
-
+    console.log('Razorpay order created:', order);
     res.json({ success: true, order });
   } catch (error) {
     console.error('Razorpay order error:', error?.statusCode, error?.error || error?.message);

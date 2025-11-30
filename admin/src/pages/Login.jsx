@@ -10,6 +10,7 @@ const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const[showPassword,setShowPassword]=useState(false);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -53,7 +54,13 @@ const Login = () => {
         </div>
         <div className='w-full '>
           <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="password" required />
+          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type={showPassword ? "text" : "password"} required />
+         <span
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-9 cursor-pointer select-none text-xs text-gray-500"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </span>
         </div>
         <button className='bg-primary text-white w-full py-2 rounded-md text-base'>Login</button>
         {

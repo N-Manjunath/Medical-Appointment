@@ -20,6 +20,7 @@ const loginDoctor = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.json({ success: true, token });
+    // console.log(token);
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: error.message });

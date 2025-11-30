@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   const { dToken } = useContext(DoctorContext)
   const { aToken } = useContext(AdminContext)
-
+console.log('Sidebar tokens:', { dToken, aToken });
   return (
     <div className='min-h-screen bg-white border-r'>
       {aToken && <ul className='text-[#515151] mt-5'>
