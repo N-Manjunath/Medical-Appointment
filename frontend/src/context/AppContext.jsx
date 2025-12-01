@@ -1,10 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
 
 export const AppContext = createContext()
 
 const AppContextProvider = (props) => {
+    const navigate = useNavigate();
     const currencySymbol = '₹'
     const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -32,21 +35,25 @@ const AppContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/api/user/get-profile', {
                 headers: { token }
             })
-
-            if (data.success) {
-                const safeUserData = {
-                    ...data.userData,
-                    address: data.userData.address || { line1: '', line2: '' },
-                    gender: data.userData.gender || '',
-                    dob: data.userData.dob || ''
-                }
-                setUserData(safeUserData)
-            } else {
-                toast.error(data.message)
-            }
+console.log(data.success);
+             if (data.success && data.userData) {
+    const safeUserData = {
+        ...data.userData,
+        address: data.userData.address || { line1: '', line2: '' },
+        gender: data.userData.gender || '',
+        dob: data.userData.dob || ''
+    }
+    setUserData(safeUserData)
+        } 
+        else {
+            console.log('here error',data.message);
+            toast.error(data.message || "User data not found")
+            navigate('/login');
+        }
         } catch (error) {
             console.log(error)
             toast.error(error.message)
+            navigate('/login');
         }
     }
 

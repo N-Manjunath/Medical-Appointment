@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { DoctorContext } from '../context/DoctorContext'
 import { AdminContext } from '../context/AdminContext'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 const Login = () => {
@@ -52,16 +53,26 @@ const Login = () => {
           <p>Email</p>
           <input onChange={(e) => setEmail(e.target.value)} value={email} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="email" required />
         </div>
-        <div className='w-full '>
-          <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type={showPassword ? "text" : "password"} required />
-         <span
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-9 cursor-pointer select-none text-xs text-gray-500"
-          >
-            {showPassword ? "Hide" : "Show"}
-          </span>
-        </div>
+       <div className="w-full">
+  <p>Password</p>
+  <div className="relative">
+    <input
+      onChange={(e) => setPassword(e.target.value)}
+      value={password}
+      className="border border-[#DADADA] rounded w-full p-2 mt-1 pr-10"
+      type={showPassword ? "text" : "password"}
+      required
+    />
+    <span
+      onClick={() => setShowPassword(!showPassword)}
+      className="absolute inset-y-0 right-4 flex items-center cursor-pointer select-none text-lg text-gray-500"
+      style={{ userSelect: 'none' }}
+    >
+      {showPassword ? <FaEyeSlash /> : <FaEye />}
+    </span>
+  </div>
+</div>
+
         <button className='bg-primary text-white w-full py-2 rounded-md text-base'>Login</button>
         {
           state === 'Admin'
