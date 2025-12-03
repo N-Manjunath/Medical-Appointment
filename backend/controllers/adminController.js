@@ -11,8 +11,8 @@ const loginAdmin = async (req, res) => {
     try {
 
         const { email, password } = req.body
-console.log('Admin login attempt with email:', email);
-console.log('Using ADMIN_EMAIL from env:', process.env.ADMIN_EMAIL);
+// console.log('Admin login attempt with email:', email);
+// console.log('Using ADMIN_EMAIL from env:', process.env.ADMIN_EMAIL);
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
             const token = jwt.sign(email + password, process.env.JWT_SECRET)
             res.json({ success: true, token })
@@ -49,7 +49,7 @@ const addDoctor = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const cfg = cloudinary.config();
-    console.log('Cloudinary at upload time:', { cloud_name: cfg.cloud_name, api_key_set: !!cfg.api_key });
+    // console.log('Cloudinary at upload time:', { cloud_name: cfg.cloud_name, api_key_set: !!cfg.api_key });
     if (!cfg.api_key || !cfg.api_secret || !cfg.cloud_name) {
       return res.status(500).json({ success: false, message: "Cloudinary not configured on server" });
     }

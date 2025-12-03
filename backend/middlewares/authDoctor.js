@@ -5,7 +5,6 @@ const authDoctor = async (req, res, next) => {
     try {
         // Check for token in Authorization header
         const authHeader = req.headers.authorization || req.headers.dtoken;
-        console.log(req.headers);
         if (!authHeader) {
             return res.status(401).json({ success: false, message: 'Authorization token missing' });
         }

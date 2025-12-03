@@ -15,8 +15,8 @@ const connectCloudinary = () => {
   });
 
   const cfg = cloudinary.config();
-  console.log('Cloudinary configured:', { cloud_name: cfg.cloud_name, api_key_set: !!cfg.api_key });
-};
+//   console.log('Cloudinary configured:', { cloud_name: cfg.cloud_name, api_key_set: !!cfg.api_key });
+ };
 
 export { cloudinary }; // export the configured instance
 export default connectCloudinary;
