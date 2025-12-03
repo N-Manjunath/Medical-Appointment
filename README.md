@@ -1,4 +1,4 @@
-# Appointy - Doctor Appointment Web App
+# Appointy - Medical Appointment Web App
 
 **Appinty** is a full-stack web application designed to make healthcare more accessible by simplifying the process of booking doctor appointments. It offers three levels of login: **Patient**, **Doctor**, and **Admin**, each with distinct features tailored to their roles. The app integrates **online payment gateways (Stripe and Razorpay)** to facilitate seamless and secure payments. Built using the **MERN stack** (MongoDB, Express.js, React.js, and Node.js), Appointy provides an efficient, user-friendly experience for both patients and healthcare providers.
 
@@ -115,23 +115,25 @@ To set up and run this project locally:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/appointy.git
-   cd appointy
+   git clone https://github.com/your-username/Medical-Appointment.git
+   cd Medical-Appointment
    ```
 
 2. **Install Dependencies**:
    ```bash
+   cd admin
    npm install
-   cd client
+   cd frontend
+   npm install
+   cd backend
    npm install
    ```
 
 3. **Environment Variables**:
-   - Create a `.env` file in the root directory and add the following:
+   - Create a `.env` file in the individual directory and add the varaiables accordingly:
      ```env
      MONGO_URI=your_mongodb_connection_string
      JWT_SECRET=your_jwt_secret
-     STRIPE_API_KEY=your_stripe_api_key
      RAZORPAY_API_KEY=your_razorpay_api_key
      ```
 
@@ -143,8 +145,9 @@ To set up and run this project locally:
 ## 📦 Folder Structure
 
 ```plaintext
-appointy/
-├── client/          # Frontend (React.js)
+Medical-Appointment/
+├── admin/           # Admin Frontend (React.js)
+├── frontend/        # User Frontend (React.js)
 ├── server/          # Backend (Node.js, Express.js)
 ├── models/          # MongoDB Schemas
 ├── controllers/     # API Controllers
